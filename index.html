@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="generator" content="Primo" />
+    <!-- HEAD_svelte-13kuk86_START -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* Reset & standardize default styles */
+        @import url("https://unpkg.com/@primo-app/primo@1.3.64/reset.css") layer;
+
+        /* Design tokens (apply to components) */
+        :root {
+            /* Custom theme options */
+            --color-accent: rebeccapurple;
+
+            /* Base values */
+            --box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+            --border-radius: 8px;
+            --border-color: #cbcace;
+        }
+
+        /* Root element (use instead of `body`) */
+        #page {
+            font-family: system-ui, sans-serif;
+            color: #222;
+            line-height: 1.2;
+            font-size: 1.125rem;
+            background: white;
+        }
+
+        /* Elements */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        a.link {
+            line-height: 1.3;
+            font-weight: 500;
+            border-bottom: 2px solid;
+            transform: translateY(-2px);
+            /* move link back into place */
+            transition: var(--transition, 0.1s border);
+        }
+
+        a.link:hover {
+            border-color: transparent;
+        }
+
+        .heading {
+            font-size: 2.5rem;
+            line-height: 1.15;
+            font-weight: 700;
+        }
+
+        .button {
+            color: white;
+            background: var(--color-accent, rebeccapurple);
+            border-radius: 5px;
+            padding: 8px 20px;
+            transition: var(--transition, 0.1s box-shadow);
+            border: 0;
+        }
+
+        /* reset */
+
+        .button:hover {
+            box-shadow: 0 0 0 2px var(--color-accent, rebeccapurple);
+        }
+
+        .button.inverted {
+            background: transparent;
+            color: var(--color-accent, rebeccapurple);
+        }
+
+        /* Content Section */
+        .section .content p {
+            padding: 0.25rem 0;
+            line-height: 1.5;
+        }
+
+        .section .content img {
+            width: 100%;
+            margin: 2rem 0;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+        }
+
+        .section .content a.link {}
+
+        .section .content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section .content h2 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .section .content h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .section .content ul {
+            list-style: disc;
+            padding: 0.5rem 0;
+            padding-left: 1.25rem;
+        }
+
+        .section .content ol {
+            list-style: decimal;
+            padding: 0.5rem 0;
+            padding-left: 1.25rem;
+        }
+
+        .section .content blockquote {
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+        }
+    </style><!-- HEAD_svelte-13kuk86_END -->
+    <style>
+        .section-container.svelte-1grguq5.svelte-1grguq5 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        .logo.svelte-1grguq5.svelte-1grguq5 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.2
+        }
+
+        .desktop-nav.svelte-1grguq5.svelte-1grguq5 {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%
+        }
+
+        .desktop-nav.svelte-1grguq5 nav.svelte-1grguq5 {
+            display: flex;
+            gap: 2rem
+        }
+
+        .desktop-nav.svelte-1grguq5 nav a.link.svelte-1grguq5 {
+            border-color: transparent;
+            transition: border-color 0.1s;
+            font-size: 0.95rem
+        }
+
+        .desktop-nav.svelte-1grguq5 nav a.link.svelte-1grguq5:hover {
+            border-color: initial
+        }
+
+        @media(min-width: 800px) {
+            .desktop-nav.svelte-1grguq5.svelte-1grguq5 {
+                display: flex
+            }
+        }
+
+        .mobile-nav.svelte-1grguq5.svelte-1grguq5 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            font-weight: 500
+        }
+
+        @media(min-width: 800px) {
+            .mobile-nav.svelte-1grguq5.svelte-1grguq5 {
+                display: none
+            }
+        }
+
+        #popup.svelte-1grguq5.svelte-1grguq5 {
+            font-size: 1.25rem;
+            display: grid;
+            gap: 1rem;
+            position: absolute;
+            text-align: center;
+            background-color: var(--background-color, white);
+            box-shadow: var(--box-shadow, 0px 4px 30px rgba(0, 0, 0, 0.1));
+            border-radius: var(--border-radius);
+            inset: 0.5rem;
+            bottom: initial;
+            padding: 2rem;
+            z-index: 1
+        }
+
+        #popup.svelte-1grguq5 button#close.svelte-1grguq5 {
+            position: absolute;
+            right: 1rem;
+            top: 1rem
+        }
+
+        .section-container.svelte-5bp2xm.svelte-5bp2xm {
+            display: grid;
+            gap: 1.5rem;
+            place-items: center;
+            text-align: center
+        }
+
+        .heading.svelte-5bp2xm.svelte-5bp2xm {
+            font-size: 3rem;
+            font-weight: 800
+        }
+
+        @media(min-width: 700px) {
+            .heading.svelte-5bp2xm.svelte-5bp2xm {
+                font-size: 4rem
+            }
+        }
+
+        .subheading.svelte-5bp2xm.svelte-5bp2xm {
+            font-size: 1.25rem
+        }
+
+        .buttons.svelte-5bp2xm.svelte-5bp2xm {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem
+        }
+
+        .buttons.svelte-5bp2xm .button.svelte-5bp2xm:not(:only-child):last-child {
+            background: inherit;
+            border: 2px solid var(--color-accent, rebeccapurple);
+            color: var(--color, #222)
+        }
+
+        .section-container.svelte-2w0b9m.svelte-2w0b9m {
+            display: grid;
+            gap: 0.5rem;
+            place-items: center
+        }
+
+        .heading.svelte-2w0b9m.svelte-2w0b9m {
+            text-align: center
+        }
+
+        .subheading.svelte-2w0b9m.svelte-2w0b9m {
+            text-align: center;
+            margin-bottom: 2rem
+        }
+
+        .tiers.svelte-2w0b9m.svelte-2w0b9m {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            place-items: start;
+            gap: 3rem
+        }
+
+        .tiers.svelte-2w0b9m .tier.svelte-2w0b9m {
+            display: grid;
+            gap: 2rem;
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius);
+            padding: 2.5rem 2rem
+        }
+
+        .tiers.svelte-2w0b9m .tier header.svelte-2w0b9m {
+            display: grid;
+            gap: 0.5rem
+        }
+
+        .tiers.svelte-2w0b9m .tier header .title.svelte-2w0b9m {
+            font-size: 0.875rem;
+            color: var(--color-accent, rebeccapurple);
+            border: 2px solid var(--color-accent, rebeccapurple);
+            border-radius: 2rem;
+            font-weight: 500;
+            padding: 0.125rem 0.5rem;
+            justify-self: flex-start
+        }
+
+        .tiers.svelte-2w0b9m .tier header .price.svelte-2w0b9m {
+            font-weight: bold
+        }
+
+        .tiers.svelte-2w0b9m .tier header .price span.numerator.svelte-2w0b9m {
+            font-size: 2rem
+        }
+
+        .tiers.svelte-2w0b9m .tier hr.svelte-2w0b9m {
+            width: 100%;
+            border-color: var(--border-color, #eee)
+        }
+
+        .tiers.svelte-2w0b9m .tier ul.features.svelte-2w0b9m {
+            display: grid;
+            gap: 1rem
+        }
+
+        .tiers.svelte-2w0b9m .tier ul.features li.svelte-2w0b9m {
+            display: flex;
+            align-items: center
+        }
+
+        .tiers.svelte-2w0b9m .tier ul.features li .icon.svelte-2w0b9m {
+            margin-right: 1rem;
+            color: var(--color-accent, rebeccapurple)
+        }
+
+        .tiers.svelte-2w0b9m .tier .button.svelte-2w0b9m {
+            width: 100%;
+            text-align: center
+        }
+
+        .teasers.svelte-zvxqyf.svelte-zvxqyf {
+            display: grid;
+            gap: 6rem
+        }
+
+        .teaser.svelte-zvxqyf.svelte-zvxqyf {
+            display: grid;
+            gap: 3rem
+        }
+
+        .teaser.svelte-zvxqyf img.svelte-zvxqyf {
+            width: 100%;
+            border-radius: var(--border-radius)
+        }
+
+        .teaser.svelte-zvxqyf .body.svelte-zvxqyf {
+            display: grid;
+            place-items: flex-start;
+            gap: 1.5rem;
+            padding: 0;
+            line-height: 1.5
+        }
+
+        .teaser.svelte-zvxqyf .body .title.svelte-zvxqyf {
+            font-size: 2.25rem;
+            font-weight: 500;
+            line-height: 1.25
+        }
+
+        @media(min-width: 800px) {
+            .teaser.svelte-zvxqyf.svelte-zvxqyf {
+                grid-template-columns: 1fr 1fr;
+                place-items: center
+                    /* switch direction for even items */
+            }
+
+            .teaser.svelte-zvxqyf:nth-child(even) .body.svelte-zvxqyf {
+                grid-row: 1;
+                grid-column: 2
+            }
+
+            .teaser.svelte-zvxqyf:nth-child(even) img.svelte-zvxqyf {
+                grid-row: 1;
+                grid-column: 1
+            }
+        }
+
+        @media(min-width: 1200px) {
+            section.svelte-zvxqyf.svelte-zvxqyf {
+                gap: 6rem
+            }
+
+            .teaser.svelte-zvxqyf.svelte-zvxqyf {
+                gap: 6rem
+            }
+        }
+
+        .section-container.svelte-16db7bl.svelte-16db7bl {
+            display: grid;
+            justify-content: center
+        }
+
+        .card.svelte-16db7bl.svelte-16db7bl {
+            padding: 4rem clamp(2rem, 10vw, 7rem);
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius);
+            text-align: center;
+            display: grid;
+            gap: 2rem
+        }
+
+        .body.svelte-16db7bl.svelte-16db7bl {
+            max-width: 700px
+        }
+
+        .buttons.svelte-16db7bl.svelte-16db7bl {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem
+        }
+
+        .buttons.svelte-16db7bl .button.svelte-16db7bl {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem
+        }
+
+        .section-container.svelte-1oe3rov.svelte-1oe3rov.svelte-1oe3rov {
+            display: grid;
+            place-items: center
+        }
+
+        .heading.svelte-1oe3rov.svelte-1oe3rov.svelte-1oe3rov {
+            text-align: center;
+            margin-bottom: 1.5rem
+        }
+
+        .accordion.svelte-1oe3rov.svelte-1oe3rov.svelte-1oe3rov {
+            width: 100%;
+            max-width: 900px
+        }
+
+        .accordion.svelte-1oe3rov .item.svelte-1oe3rov.svelte-1oe3rov {
+            padding: 1.5rem 0
+        }
+
+        .accordion.svelte-1oe3rov .item.svelte-1oe3rov.svelte-1oe3rov:not(:last-child) {
+            border-bottom: 1px solid var(--border-color, #eee)
+        }
+
+        .accordion.svelte-1oe3rov .item.active button .icon.svelte-1oe3rov.svelte-1oe3rov {
+            transform: scaleY(-1)
+        }
+
+        .accordion.svelte-1oe3rov .item button.svelte-1oe3rov.svelte-1oe3rov {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%
+        }
+
+        .accordion.svelte-1oe3rov .item button span.svelte-1oe3rov.svelte-1oe3rov {
+            font-size: 1.25rem;
+            font-weight: 600
+        }
+
+        .accordion.svelte-1oe3rov .item button .icon.svelte-1oe3rov.svelte-1oe3rov {
+            font-size: 1.25rem;
+            color: var(--color-accent, rebeccapurple);
+            transition: transform 0.2s
+        }
+
+        .accordion.svelte-1oe3rov .item button.svelte-1oe3rov+.description.svelte-1oe3rov {
+            padding-top: 0.5rem
+        }
+
+        .accordion.svelte-1oe3rov .item .description.svelte-1oe3rov.svelte-1oe3rov {
+            padding-right: 2rem
+        }
+
+        .section-container.svelte-1qw9ecb.svelte-1qw9ecb {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem
+        }
+
+        .heading.svelte-1qw9ecb.svelte-1qw9ecb {
+            text-align: center;
+            margin-bottom: 1rem
+        }
+
+        ol.svelte-1qw9ecb.svelte-1qw9ecb {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            place-items: flex-start;
+            gap: 2rem
+        }
+
+        ol.svelte-1qw9ecb li.svelte-1qw9ecb {
+            display: flex;
+            gap: 1rem;
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius);
+            padding: 2rem
+        }
+
+        ol.svelte-1qw9ecb .number.svelte-1qw9ecb {
+            color: var(--color-accent, rebeccapurple);
+            font-size: 1.25rem;
+            font-weight: bold
+        }
+
+        ol.svelte-1qw9ecb .body.svelte-1qw9ecb {
+            display: grid;
+            gap: 0.5rem
+        }
+
+        ol.svelte-1qw9ecb .body .title.svelte-1qw9ecb {
+            font-weight: bold;
+            font-size: 1.25rem
+        }
+
+        .button.svelte-1qw9ecb.svelte-1qw9ecb {
+            display: inline-flex;
+            align-self: flex-end;
+            gap: 0.5rem
+        }
+
+        .button.svelte-1qw9ecb svg {
+            transition: transform 0.2s
+        }
+
+        .button.svelte-1qw9ecb:hover svg {
+            transform: translateX(3px)
+        }
+
+        .section-container.svelte-c73nzi.svelte-c73nzi {
+            text-align: center
+        }
+
+        .heading.svelte-c73nzi.svelte-c73nzi {
+            margin-bottom: 1rem
+        }
+
+        .subheading.svelte-c73nzi.svelte-c73nzi {
+            font-size: 1.25rem;
+            margin-bottom: 2rem
+        }
+
+        .cards.svelte-c73nzi.svelte-c73nzi {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 15rem));
+            justify-content: center
+        }
+
+        .cards.svelte-c73nzi .card.svelte-c73nzi {
+            display: grid;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 2rem
+        }
+
+        .cards.svelte-c73nzi .card .stat.svelte-c73nzi {
+            color: var(--color-accent, rebeccapurple);
+            font-size: 2rem;
+            font-weight: bold
+        }
+
+        .cards.svelte-c73nzi .card .title.svelte-c73nzi {
+            font-weight: 500
+        }
+
+        .section-container.svelte-1mey70m.svelte-1mey70m {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem
+        }
+
+        .heading.svelte-1mey70m.svelte-1mey70m {
+            text-align: center
+        }
+
+        ul.svelte-1mey70m.svelte-1mey70m {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+            gap: 1.5rem
+        }
+
+        ul.svelte-1mey70m li.svelte-1mey70m {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius);
+            padding: 1.5rem
+        }
+
+        ul.svelte-1mey70m li .title.svelte-1mey70m {
+            display: flex;
+            gap: 0.5rem;
+            font-weight: bold
+        }
+
+        .section-container.svelte-wfuuhq.svelte-wfuuhq {
+            display: grid;
+            gap: 3rem
+        }
+
+        @media(min-width: 700px) {
+            .section-container.svelte-wfuuhq.svelte-wfuuhq {
+                grid-template-columns: 2fr 1fr;
+                gap: 7rem
+            }
+        }
+
+        .content.svelte-wfuuhq.svelte-wfuuhq {
+            display: grid;
+            place-content: flex-start;
+            gap: 1rem
+        }
+
+        form.svelte-wfuuhq.svelte-wfuuhq {
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius);
+            display: grid;
+            gap: 1rem;
+            padding: 2rem
+        }
+
+        form.svelte-wfuuhq label.svelte-wfuuhq {
+            display: grid;
+            gap: 0.25rem;
+            font-size: 0.75rem
+        }
+
+        form.svelte-wfuuhq input.svelte-wfuuhq {
+            width: 100%;
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius);
+            padding: 0.5rem 0.75rem
+        }
+
+        form.svelte-wfuuhq .button.svelte-wfuuhq {
+            width: 100%
+        }
+
+        .section-container.svelte-11xlt7k.svelte-11xlt7k {
+            display: grid;
+            justify-content: center
+        }
+
+        .card.svelte-11xlt7k.svelte-11xlt7k {
+            max-width: 640px;
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius);
+            padding: 3.5rem 2.75rem;
+            text-align: center;
+            display: grid;
+            place-items: center;
+            gap: 2rem
+        }
+
+        @media(min-width: 600px) {
+            .card.svelte-11xlt7k.svelte-11xlt7k {
+                padding: 4.5rem 6rem
+            }
+        }
+
+        .link.svelte-11xlt7k.svelte-11xlt7k {
+            font-weight: 500;
+            border-color: transparent;
+            transition: var(--transition, 0.1s border)
+        }
+
+        .link.svelte-11xlt7k.svelte-11xlt7k:hover {
+            border-color: initial
+        }
+
+        ul.svelte-11xlt7k.svelte-11xlt7k {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem
+        }
+
+        ul.svelte-11xlt7k li.svelte-11xlt7k {
+            color: white;
+            background: var(--color-accent, rebeccapurple);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.1s transform
+        }
+
+        ul.svelte-11xlt7k li.svelte-11xlt7k:hover {
+            transform: scale(1.1)
+        }
+
+        ul.svelte-11xlt7k li a.svelte-11xlt7k {
+            font-size: 1.5rem;
+            padding: 0.75rem
+        }
+
+        .section-container.svelte-qycuu9.svelte-qycuu9 {
+            text-align: center
+        }
+
+        .heading.svelte-qycuu9.svelte-qycuu9 {
+            margin-bottom: 3rem
+        }
+
+        .testimonial.svelte-qycuu9.svelte-qycuu9 {
+            display: grid;
+            gap: 1.5rem;
+            place-items: center
+        }
+
+        .card.svelte-qycuu9.svelte-qycuu9 {
+            display: grid;
+            gap: 1.5rem;
+            place-items: center;
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 600px
+        }
+
+        .card.svelte-qycuu9 .quote-icon.svelte-qycuu9 {
+            font-size: 3rem;
+            color: var(--color-accent, rebeccapurple)
+        }
+
+        .card.svelte-qycuu9 .person.svelte-qycuu9 {
+            display: grid;
+            font-size: 0.875rem
+        }
+
+        .card.svelte-qycuu9 .person .name.svelte-qycuu9 {
+            font-weight: bold
+        }
+
+        .card.svelte-qycuu9 .person .title.svelte-qycuu9 {
+            opacity: 0.8
+        }
+
+        .controls.svelte-qycuu9.svelte-qycuu9 {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            width: 100%
+        }
+
+        .controls.svelte-qycuu9 button.svelte-qycuu9 {
+            font-size: 1.5rem
+        }
+
+        .controls.svelte-qycuu9 button[disabled].svelte-qycuu9 {
+            opacity: 0.25
+        }
+
+        @media(min-width: 700px) {
+            .card.svelte-qycuu9.svelte-qycuu9 {
+                padding: 3rem 4rem
+            }
+
+            .controls.svelte-qycuu9.svelte-qycuu9 {
+                position: absolute;
+                max-width: calc(600px + 6rem)
+            }
+        }
+
+        .heading.svelte-bexqsw.svelte-bexqsw {
+            text-align: center;
+            margin-bottom: 3rem
+        }
+
+        ul.cards.svelte-bexqsw.svelte-bexqsw {
+            display: grid;
+            place-items: center;
+            gap: 2rem
+        }
+
+        ul.cards.svelte-bexqsw li.svelte-bexqsw {
+            max-width: 400px;
+            padding: 2rem;
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius)
+        }
+
+        ul.cards.svelte-bexqsw li figure.svelte-bexqsw {
+            padding: 0 2rem
+        }
+
+        ul.cards.svelte-bexqsw li figure img.svelte-bexqsw {
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            width: 100%
+        }
+
+        ul.cards.svelte-bexqsw li .info .details.svelte-bexqsw {
+            display: grid;
+            text-align: center;
+            margin-bottom: 1rem
+        }
+
+        ul.cards.svelte-bexqsw li .info .details span.name.svelte-bexqsw {
+            font-weight: 600
+        }
+
+        ul.cards.svelte-bexqsw li .info .social.svelte-bexqsw {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--color-accent, rebeccapurple)
+        }
+
+        ul.cards.svelte-bexqsw li .info .social a.svelte-bexqsw {
+            transition: var(--transition, 0.1s transform)
+        }
+
+        ul.cards.svelte-bexqsw li .info .social a.svelte-bexqsw:hover {
+            transform: scale(1.1)
+        }
+
+        @media(min-width: 600px) {
+            ul.cards.svelte-bexqsw.svelte-bexqsw {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(min-width: 1000px) {
+            ul.cards.svelte-bexqsw.svelte-bexqsw {
+                grid-template-columns: 1fr 1fr 1fr
+            }
+        }
+
+        .section-container.svelte-2w0b9m.svelte-2w0b9m {
+            display: grid;
+            gap: 0.5rem;
+            place-items: center
+        }
+
+        .heading.svelte-2w0b9m.svelte-2w0b9m {
+            text-align: center
+        }
+
+        .subheading.svelte-2w0b9m.svelte-2w0b9m {
+            text-align: center;
+            margin-bottom: 2rem
+        }
+
+        .tiers.svelte-2w0b9m.svelte-2w0b9m {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            place-items: start;
+            gap: 3rem
+        }
+
+        .tiers.svelte-2w0b9m .tier.svelte-2w0b9m {
+            display: grid;
+            gap: 2rem;
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius);
+            padding: 2.5rem 2rem
+        }
+
+        .tiers.svelte-2w0b9m .tier header.svelte-2w0b9m {
+            display: grid;
+            gap: 0.5rem
+        }
+
+        .tiers.svelte-2w0b9m .tier header .title.svelte-2w0b9m {
+            font-size: 0.875rem;
+            color: var(--color-accent, rebeccapurple);
+            border: 2px solid var(--color-accent, rebeccapurple);
+            border-radius: 2rem;
+            font-weight: 500;
+            padding: 0.125rem 0.5rem;
+            justify-self: flex-start
+        }
+
+        .tiers.svelte-2w0b9m .tier header .price.svelte-2w0b9m {
+            font-weight: bold
+        }
+
+        .tiers.svelte-2w0b9m .tier header .price span.numerator.svelte-2w0b9m {
+            font-size: 2rem
+        }
+
+        .tiers.svelte-2w0b9m .tier hr.svelte-2w0b9m {
+            width: 100%;
+            border-color: var(--border-color, #eee)
+        }
+
+        .tiers.svelte-2w0b9m .tier ul.features.svelte-2w0b9m {
+            display: grid;
+            gap: 1rem
+        }
+
+        .tiers.svelte-2w0b9m .tier ul.features li.svelte-2w0b9m {
+            display: flex;
+            align-items: center
+        }
+
+        .tiers.svelte-2w0b9m .tier ul.features li .icon.svelte-2w0b9m {
+            margin-right: 1rem;
+            color: var(--color-accent, rebeccapurple)
+        }
+
+        .tiers.svelte-2w0b9m .tier .button.svelte-2w0b9m {
+            width: 100%;
+            text-align: center
+        }
+
+        .section-container.svelte-c09796.svelte-c09796 {
+            display: grid;
+            gap: 2rem
+        }
+
+        @media(min-width: 800px) {
+            .section-container.svelte-c09796.svelte-c09796 {
+                grid-template-columns: 3fr 2fr;
+                gap: 14rem
+            }
+        }
+
+        .content.svelte-c09796.svelte-c09796 {
+            display: grid;
+            place-content: flex-start;
+            gap: 1rem
+        }
+
+        .content.svelte-c09796 .social-links.svelte-c09796 {
+            display: grid;
+            gap: 0.5rem
+        }
+
+        .content.svelte-c09796 .social-links a.svelte-c09796 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem
+        }
+
+        .content.svelte-c09796 .social-links a .icon.svelte-c09796 {
+            font-size: 1.25rem;
+            color: var(--color-accent, rebeccapurple);
+            transition: var(--transition, 0.1s transform)
+        }
+
+        .content.svelte-c09796 .social-links a:hover .icon.svelte-c09796 {
+            transform: scale(1.1)
+        }
+
+        form.svelte-c09796.svelte-c09796 {
+            display: grid;
+            gap: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--border-color, #eee);
+            border-radius: var(--border-radius)
+        }
+
+        form.svelte-c09796 label.svelte-c09796 {
+            display: grid;
+            gap: 0.25rem
+        }
+
+        form.svelte-c09796 label span.svelte-c09796 {
+            font-size: 0.75rem;
+            font-weight: 500
+        }
+
+        form.svelte-c09796 label input.svelte-c09796,
+        form.svelte-c09796 label textarea.svelte-c09796 {
+            padding: 0.5rem;
+            outline-color: transparent;
+            transition: var(--transition, 0.1s outline-color);
+            border: 1.5px solid var(--border-color, #eee);
+            border-radius: var(--border-radius)
+        }
+
+        form.svelte-c09796 label input.svelte-c09796:focus,
+        form.svelte-c09796 label textarea.svelte-c09796:focus {
+            outline-color: var(--color-accent, rebeccapurple)
+        }
+
+        form.svelte-c09796 .button.svelte-c09796 {
+            margin-top: 1rem
+        }
+
+        .section-container.svelte-1m1m225.svelte-1m1m225 {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        @media(min-width: 600px) {
+            .section-container.svelte-1m1m225.svelte-1m1m225 {
+                flex-direction: row
+            }
+        }
+
+        nav.svelte-1m1m225.svelte-1m1m225 {
+            display: flex;
+            gap: 1rem
+        }
+
+        nav.svelte-1m1m225 .link.svelte-1m1m225 {
+            border-color: transparent
+        }
+
+        nav.svelte-1m1m225 .link.svelte-1m1m225:hover {
+            border-color: initial
+        }
+
+        .primo.svelte-1m1m225.svelte-1m1m225 {
+            font-weight: 600;
+            font-size: 0.75rem
+        }
+
+        .primo.svelte-1m1m225 a.svelte-1m1m225 {
+            text-decoration: underline;
+            color: rgb(53, 217, 148)
+        }
+
+        .social-links.svelte-1m1m225.svelte-1m1m225 {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.5rem
+        }
+
+        .social-links.svelte-1m1m225 a.svelte-1m1m225 {
+            color: var(--color-accent, rebeccapurple);
+            transition: var(--transition, 0.1s transform)
+        }
+
+        .social-links.svelte-1m1m225 a.svelte-1m1m225:hover {
+            transform: scale(1.1)
+        }
+    </style>
+</head>
+
+<body id="page">
+
+    <div class="section" id="section-cf7466a6-1bee-47b2-942f-047a952b3c2b">
+        <div class="component">
+            <header class="section-container svelte-1grguq5">
+                <div class="desktop-nav svelte-1grguq5"><a href="/" class="logo svelte-1grguq5">Laboris amet ad</a>
+                    <nav class="svelte-1grguq5"><a class="link svelte-1grguq5" href="">Home</a><a class="link svelte-1grguq5" href="/">About</a><a class="link svelte-1grguq5" href="/">Contact</a></nav>
+                </div>
+                <div class="mobile-nav svelte-1grguq5"><a href="/" class="logo svelte-1grguq5">Laboris amet ad</a>
+                    <button id="open" aria-label="Open mobile navigation"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="30" height="30" viewBox="0 0 24 24" class="iconify iconify--eva"><!-- HTML_TAG_START -->
+                            <g id="iconifySvelte0">
+                                <g id="iconifySvelte1">
+                                    <g id="iconifySvelte2" fill="currentColor">
+                                        <rect width="18" height="2" x="3" y="11" rx=".95" ry=".95" />
+                                        <rect width="18" height="2" x="3" y="16" rx=".95" ry=".95" />
+                                        <rect width="18" height="2" x="3" y="6" rx=".95" ry=".95" />
+                                    </g>
+                                </g>
+                            </g><!-- HTML_TAG_END -->
+                        </svg></button>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="section" id="section-f4a92ea7-1a97-46dd-ab4f-06aa8ff33b8e">
+        <div class="component">
+            <header class="section-container svelte-5bp2xm">
+                <h1 class="heading svelte-5bp2xm">Welcome to your new thing</h1>
+                <span class="subheading svelte-5bp2xm">Minim et incididunt</span>
+                <div class="buttons svelte-5bp2xm"><a class="button svelte-5bp2xm" href="/">aliqua</a><a class="button svelte-5bp2xm" href="/">et</a></div>
+            </header>
+        </div>
+    </div>
+    <div class="section" id="section-da72cc78-348a-4046-8fca-b84c1feb8ee4">
+        <div class="component">
+            <section class="section-container svelte-2w0b9m">
+                <h2 class="heading svelte-2w0b9m">Ad est voluptate</h2>
+                <h3 class="subheading svelte-2w0b9m">Minim ut sit</h3>
+                <div class="tiers svelte-2w0b9m">
+                    <div class="tier svelte-2w0b9m">
+                        <header class="svelte-2w0b9m">
+                            <h3 class="title svelte-2w0b9m">Proident aliqua tempor</h3>
+                            <div class="price svelte-2w0b9m"><span class="numerator svelte-2w0b9m">Nisi ullamco occaecat</span>
+                                <span class="denominator svelte-2w0b9m">Reprehenderit laboris voluptate</span>
+                            </div>
+                            <span class="description"><!-- HTML_TAG_START -->
+                                <h1 id="thisissomemarkdown">This is some markdown</h1><!-- HTML_TAG_END -->
+                            </span>
+                        </header>
+                        <hr class="svelte-2w0b9m">
+                        <ul class="features svelte-2w0b9m">
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"></span>
+                                <span>Labore occaecat dolor</span>
+                            </li>
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"></span>
+                                <span>Qui ad velit</span>
+                            </li>
+                        </ul>
+                        <a href="/" class="button svelte-2w0b9m">in</a>
+                    </div>
+                    <div class="tier svelte-2w0b9m">
+                        <header class="svelte-2w0b9m">
+                            <h3 class="title svelte-2w0b9m">Elit aute cillum</h3>
+                            <div class="price svelte-2w0b9m"><span class="numerator svelte-2w0b9m">Eiusmod nostrud qui</span>
+                                <span class="denominator svelte-2w0b9m">Do labore fugiat</span>
+                            </div>
+                            <span class="description"><!-- HTML_TAG_START -->
+                                <h1 id="thisissomemarkdown">This is some markdown</h1><!-- HTML_TAG_END -->
+                            </span>
+                        </header>
+                        <hr class="svelte-2w0b9m">
+                        <ul class="features svelte-2w0b9m">
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"></span>
+                                <span>Ut ad ad</span>
+                            </li>
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"></span>
+                                <span>Mollit deserunt sunt</span>
+                            </li>
+                        </ul>
+                        <a href="/" class="button svelte-2w0b9m">laborum</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-03524477-cabd-4c95-915f-2eff0a20d78c">
+        <div class="component">
+            <section class="section-container svelte-zvxqyf">
+                <div class="teasers svelte-zvxqyf">
+                    <div class="teaser svelte-zvxqyf">
+                        <div class="body svelte-zvxqyf">
+                            <h2 class="title svelte-zvxqyf">Reprehenderit ipsum cupidatat</h2>
+                            <div class="description"><!-- HTML_TAG_START -->
+                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><!-- HTML_TAG_END -->
+                            </div>
+                            <a class="link svelte-zvxqyf" href="/">Learn More
+                            </a>
+                        </div>
+                        <img src="https://picsum.photos/600/400?blur=10" alt="" class="svelte-zvxqyf">
+                    </div>
+                    <div class="teaser svelte-zvxqyf">
+                        <div class="body svelte-zvxqyf">
+                            <h2 class="title svelte-zvxqyf">Quis dolor culpa</h2>
+                            <div class="description"><!-- HTML_TAG_START -->
+                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><!-- HTML_TAG_END -->
+                            </div>
+                            <a class="link svelte-zvxqyf" href="/">Learn More
+                            </a>
+                        </div>
+                        <img src="https://picsum.photos/600/400?blur=10" alt="" class="svelte-zvxqyf">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-91ab347a-aca5-4e77-b835-79b7be3d682c">
+        <div class="component">
+            <section class="section-container svelte-16db7bl">
+                <div class="card svelte-16db7bl">
+                    <h2 class="heading svelte-16db7bl">Pariatur duis sit</h2>
+                    <div class="body svelte-16db7bl"><!-- HTML_TAG_START -->
+                        <h1 id="thisissomemarkdown">This is some markdown</h1><!-- HTML_TAG_END -->
+                    </div>
+                    <div class="buttons svelte-16db7bl"><a class="button svelte-16db7bl" href="/"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8h5Z" /><!-- HTML_TAG_END -->
+                            </svg>
+                            <span>eu</span>
+                        </a><a class="button svelte-16db7bl" href="/"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8h5Z" /><!-- HTML_TAG_END -->
+                            </svg>
+                            <span>incididunt</span>
+                        </a></div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-65cc0cb3-705e-4df2-8b5e-e5cab1cef0e8">
+        <div class="component">
+            <section class="section-container svelte-1oe3rov">
+                <h2 class="heading svelte-1oe3rov">Frequently Asked Questions</h2>
+                <div class="accordion svelte-1oe3rov">
+                    <div class="item svelte-1oe3rov active"><button class="svelte-1oe3rov"><span class="svelte-1oe3rov">Sit aliquip ipsum</span>
+                            <span class="icon svelte-1oe3rov"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 256 256" class="iconify iconify--ph"><!-- HTML_TAG_START -->
+                                    <path fill="currentColor" d="m216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" /><!-- HTML_TAG_END -->
+                                </svg>
+                            </span></button>
+                        <div class="description svelte-1oe3rov"><!-- HTML_TAG_START -->
+                            <p>Aute sint ex sit do id ut anim non. Consectetur ex est qui ullamco velit nostrud.</p><!-- HTML_TAG_END -->
+                        </div>
+                        <noscript>
+                            <div class="description svelte-1oe3rov"><!-- HTML_TAG_START -->
+                                <p>Aute sint ex sit do id ut anim non. Consectetur ex est qui ullamco velit nostrud.</p><!-- HTML_TAG_END -->
+                            </div>
+                        </noscript>
+                    </div>
+                    <div class="item svelte-1oe3rov"><button class="svelte-1oe3rov"><span class="svelte-1oe3rov">Ad commodo labore</span>
+                            <span class="icon svelte-1oe3rov"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 256 256" class="iconify iconify--ph"><!-- HTML_TAG_START -->
+                                    <path fill="currentColor" d="m216.49 104.49l-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" /><!-- HTML_TAG_END -->
+                                </svg>
+                            </span></button>
+
+                        <noscript>
+                            <div class="description svelte-1oe3rov"><!-- HTML_TAG_START -->
+                                <p>Elit officia amet id adipisicing elit esse elit pariatur commodo occaecat aute dolore Lorem consectetur. Duis ad ipsum commodo eiusmod amet.</p><!-- HTML_TAG_END -->
+                            </div>
+                        </noscript>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-12dcf0e3-57d6-43c5-aa6a-65527e9a12b0">
+        <div class="component">
+            <section class="section-container svelte-1qw9ecb">
+                <h2 class="heading svelte-1qw9ecb">Excepteur ut enim</h2>
+                <ol class="svelte-1qw9ecb">
+                    <li class="svelte-1qw9ecb"><span class="number svelte-1qw9ecb">1.</span>
+                        <div class="body svelte-1qw9ecb"><span class="title svelte-1qw9ecb">Fugiat aliquip elit</span>
+                            <span class="subtitle"><!-- HTML_TAG_START -->
+                                <p>Occaecat tempor occaecat dolore nostrud esse aliquip ipsum proident nisi amet laboris. Incididunt sit in est veniam nulla minim fugiat cillum. </p><!-- HTML_TAG_END -->
+                            </span>
+                        </div>
+                    </li>
+                    <li class="svelte-1qw9ecb"><span class="number svelte-1qw9ecb">2.</span>
+                        <div class="body svelte-1qw9ecb"><span class="title svelte-1qw9ecb">Consequat ad laboris</span>
+                            <span class="subtitle"><!-- HTML_TAG_START -->
+                                <p>Enim proident eiusmod id irure. Adipisicing occaecat proident enim cupidatat. </p><!-- HTML_TAG_END -->
+                            </span>
+                        </div>
+                    </li>
+                </ol>
+                <a class="button svelte-1qw9ecb" href="/"><span>ipsum</span></a>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-26ab9fa1-7006-41d5-b427-598c92081795">
+        <div class="component">
+            <section class="section-container svelte-c73nzi">
+                <h2 class="heading svelte-c73nzi">Eu sint amet</h2>
+                <h3 class="subheading svelte-c73nzi">Amet ad sit</h3>
+                <div class="cards svelte-c73nzi">
+                    <div class="card svelte-c73nzi"><span class="stat svelte-c73nzi">100%</span>
+                        <span class="title svelte-c73nzi">Primo</span>
+                    </div>
+                    <div class="card svelte-c73nzi"><span class="stat svelte-c73nzi">100%</span>
+                        <span class="title svelte-c73nzi">Primo</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-8cf66911-bf88-4a91-86eb-330c6114b558">
+        <div class="component">
+            <section class="section-container svelte-1mey70m">
+                <h2 class="heading svelte-1mey70m">Amet laboris ipsum</h2>
+                <ul class="svelte-1mey70m">
+                    <li class="svelte-1mey70m">
+                        <h3 class="title svelte-1mey70m"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="20" height="20" viewBox="0 0 24 24" style="color: var(--color-accent, rebeccapurple)" class="iconify iconify--akar-icons"><!-- HTML_TAG_START -->
+                                <path fill="currentColor" fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1Zm4.768 9.14a1 1 0 1 0-1.536-1.28l-4.3 5.159l-2.225-2.226a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.475-.067l5-6Z" clip-rule="evenodd" /><!-- HTML_TAG_END -->
+                            </svg>
+                            <span>Ut et commodo</span>
+                        </h3>
+                        <div class="description"><!-- HTML_TAG_START -->
+                            <p>Id exercitation officia cillum fugiat velit occaecat occaecat ut reprehenderit. Adipisicing aliquip labore nisi et adipisicing. </p><!-- HTML_TAG_END -->
+                        </div>
+                    </li>
+                    <li class="svelte-1mey70m">
+                        <h3 class="title svelte-1mey70m"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="20" height="20" viewBox="0 0 24 24" style="color: var(--color-accent, rebeccapurple)" class="iconify iconify--akar-icons"><!-- HTML_TAG_START -->
+                                <path fill="currentColor" fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1Zm4.768 9.14a1 1 0 1 0-1.536-1.28l-4.3 5.159l-2.225-2.226a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.475-.067l5-6Z" clip-rule="evenodd" /><!-- HTML_TAG_END -->
+                            </svg>
+                            <span>Minim excepteur aliqua</span>
+                        </h3>
+                        <div class="description"><!-- HTML_TAG_START -->
+                            <p>Officia consequat consectetur deserunt velit amet veniam irure laboris. Reprehenderit ut enim dolor. </p><!-- HTML_TAG_END -->
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-f7992160-4c0c-4624-9d5d-0855a482f837">
+        <div class="component">
+            <section class="section-container svelte-wfuuhq">
+                <div class="content svelte-wfuuhq">
+                    <h2 class="heading svelte-wfuuhq">Veniam sit culpa</h2>
+                    <div class="body svelte-wfuuhq"><!-- HTML_TAG_START -->
+                        <p>Sit deserunt eu sunt Lorem amet veniam esse enim labore ea consectetur non esse laboris non. Proident ea Lorem occaecat. </p><!-- HTML_TAG_END -->
+                    </div>
+                </div>
+                <form class="svelte-wfuuhq"><label class="svelte-wfuuhq"><span>Email Address</span>
+                        <input type="email" class="svelte-wfuuhq"></label>
+                    <button type="submit" class="button svelte-wfuuhq">Subscribe</button>
+                </form>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-b0d6c50b-2f54-4708-bdba-94f31d1e60f8">
+        <div class="component">
+            <section class="section-container svelte-11xlt7k">
+                <div class="card svelte-11xlt7k">
+                    <h2 class="heading svelte-11xlt7k">In culpa culpa</h2>
+                    <a class="link svelte-11xlt7k" href="mailto:mateo@gmail.com">mateo@gmail.com</a>
+                    <ul class="svelte-11xlt7k">
+                        <li class="svelte-11xlt7k"><a href="/" aria-label="mollit" class="svelte-11xlt7k"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                    <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" /><!-- HTML_TAG_END -->
+                                </svg></a>
+                        </li>
+                        <li class="svelte-11xlt7k"><a href="/" aria-label="eu" class="svelte-11xlt7k"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                    <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" /><!-- HTML_TAG_END -->
+                                </svg></a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-838e46e1-1f18-4fca-a66a-3225bc07322a">
+        <div class="component">
+            <aside class="section-container svelte-qycuu9">
+                <h2 class="heading svelte-qycuu9">Eu ex proident</h2>
+                <div class="testimonial svelte-qycuu9">
+                    <div class="card svelte-qycuu9"><span class="quote-icon svelte-qycuu9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="0.88em" height="1em" viewBox="0 0 448 512" class="iconify iconify--fa6-solid"><!-- HTML_TAG_START -->
+                                <path fill="currentColor" d="M448 296c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8h-64c-35.3 0-64-28.7-64-64v-64c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v136zm-256 0c0 66.3-53.7 120-120 120h-8c-17.7 0-32-14.3-32-32s14.3-32 32-32h8c30.9 0 56-25.1 56-56v-8H64c-35.3 0-64-28.7-64-64v-64c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v136z" /><!-- HTML_TAG_END -->
+                            </svg></span>
+                        <div class="quote svelte-qycuu9" data-key="testimonials[0].quote"><!-- HTML_TAG_START -->Enim aliquip aliquip aute incididunt consequat labore adipisicing et aliqua commodo nisi laborum excepteur. Dolor et tempor irure non reprehenderit deserunt laboris aliqua ad tempor.<!-- HTML_TAG_END --></div>
+                        <div class="person svelte-qycuu9"><span class="name svelte-qycuu9" data-key="testimonials[0].name">Person Name</span>
+                            <span class="title svelte-qycuu9" data-key="testimonials[0].title">Title</span>
+                        </div>
+                    </div>
+                    <div class="controls svelte-qycuu9"><button disabled aria-label="Show previous item" class="svelte-qycuu9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 16 16" class="iconify iconify--charm"><!-- HTML_TAG_START -->
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.25 3.75L5.75 8l4.5 4.25" /><!-- HTML_TAG_END -->
+                            </svg></button>
+                        <button aria-label="Show next item" class="svelte-qycuu9"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 16 16" class="iconify iconify--charm"><!-- HTML_TAG_START -->
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.75 12.25L10.25 8l-4.5-4.25" /><!-- HTML_TAG_END -->
+                            </svg></button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <div class="section" id="section-90a44919-f9b0-4ec6-ad1c-0baace8645c9">
+        <div class="component">
+            <section class="section-container svelte-bexqsw">
+                <h2 class="heading svelte-bexqsw">Our Team</h2>
+                <ul class="cards svelte-bexqsw">
+                    <li class="svelte-bexqsw">
+                        <figure class="svelte-bexqsw"><img alt="" src="https://images.unsplash.com/photo-1573496799436-5c34ef41818d?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8d29yayUyMHBvcnRyYWl0fGVufDB8fDB8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=900&amp;q=60" class="svelte-bexqsw">
+                        </figure>
+                        <div class="info">
+                            <div class="details svelte-bexqsw"><span class="name svelte-bexqsw">Ea veniam et</span>
+                                <span class="title">Fugiat occaecat velit</span>
+                            </div>
+                            <div class="social svelte-bexqsw"><a href="/" aria-label="amet" class="svelte-bexqsw"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z" /><!-- HTML_TAG_END -->
+                                    </svg>
+                                </a><a href="/" aria-label="exercitation" class="svelte-bexqsw"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" /><!-- HTML_TAG_END -->
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="svelte-bexqsw">
+                        <figure class="svelte-bexqsw"><img alt="" src="https://images.unsplash.com/photo-1601935111741-ae98b2b230b0?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80" class="svelte-bexqsw">
+                        </figure>
+                        <div class="info">
+                            <div class="details svelte-bexqsw"><span class="name svelte-bexqsw">Dolore sint esse</span>
+                                <span class="title">Enim labore dolor</span>
+                            </div>
+                            <div class="social svelte-bexqsw"><a href="/" aria-label="voluptate" class="svelte-bexqsw"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" /><!-- HTML_TAG_END -->
+                                    </svg>
+                                </a><a href="/" aria-label="dolor" class="svelte-bexqsw"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z" /><!-- HTML_TAG_END -->
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="svelte-bexqsw">
+                        <figure class="svelte-bexqsw"><img alt="" src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTN8fHdvcmslMjBwb3J0cmFpdHxlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=900&amp;q=60" class="svelte-bexqsw">
+                        </figure>
+                        <div class="info">
+                            <div class="details svelte-bexqsw"><span class="name svelte-bexqsw">Tempor elit eiusmod</span>
+                                <span class="title">Laboris voluptate ipsum</span>
+                            </div>
+                            <div class="social svelte-bexqsw"><a href="/" aria-label="fugiat" class="svelte-bexqsw"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" /><!-- HTML_TAG_END -->
+                                    </svg>
+                                </a><a href="/" aria-label="sit" class="svelte-bexqsw"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z" /><!-- HTML_TAG_END -->
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-03ce3e0a-c02c-458f-a96f-ebfc96d6cec6">
+        <div class="component">
+            <section class="section-container svelte-2w0b9m">
+                <h2 class="heading svelte-2w0b9m">Pricing</h2>
+                <h3 class="subheading svelte-2w0b9m">Irure sit voluptate</h3>
+                <div class="tiers svelte-2w0b9m">
+                    <div class="tier svelte-2w0b9m">
+                        <header class="svelte-2w0b9m">
+                            <h3 class="title svelte-2w0b9m">Premium</h3>
+                            <div class="price svelte-2w0b9m"><span class="numerator svelte-2w0b9m">$25</span>
+                                <span class="denominator svelte-2w0b9m">/month</span>
+                            </div>
+                            <span class="description"><!-- HTML_TAG_START -->
+                                <p>Laborum sunt laboris dolor fugiat elit dolore commodo. Consectetur commodo ea deserunt tempor. </p><!-- HTML_TAG_END -->
+                            </span>
+                        </header>
+                        <hr class="svelte-2w0b9m">
+                        <ul class="features svelte-2w0b9m">
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z" /><!-- HTML_TAG_END -->
+                                    </svg></span>
+                                <span>Do excepteur deserunt</span>
+                            </li>
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z" /><!-- HTML_TAG_END -->
+                                    </svg></span>
+                                <span>Minim laborum labore</span>
+                            </li>
+                        </ul>
+                        <a href="/" class="button svelte-2w0b9m">laboris</a>
+                    </div>
+                    <div class="tier svelte-2w0b9m">
+                        <header class="svelte-2w0b9m">
+                            <h3 class="title svelte-2w0b9m">Premium</h3>
+                            <div class="price svelte-2w0b9m"><span class="numerator svelte-2w0b9m">$25</span>
+                                <span class="denominator svelte-2w0b9m">/month</span>
+                            </div>
+                            <span class="description"><!-- HTML_TAG_START -->
+                                <p>Id officia quis cupidatat et quis amet mollit ea dolore laboris sint ad irure pariatur. Cillum minim Lorem est aute exercitation aliquip ex ullamco. </p><!-- HTML_TAG_END -->
+                            </span>
+                        </header>
+                        <hr class="svelte-2w0b9m">
+                        <ul class="features svelte-2w0b9m">
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z" /><!-- HTML_TAG_END -->
+                                    </svg></span>
+                                <span>Consectetur dolore reprehenderit</span>
+                            </li>
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z" /><!-- HTML_TAG_END -->
+                                    </svg></span>
+                                <span>Eu cupidatat cupidatat</span>
+                            </li>
+                        </ul>
+                        <a href="/" class="button svelte-2w0b9m">duis</a>
+                    </div>
+                    <div class="tier svelte-2w0b9m">
+                        <header class="svelte-2w0b9m">
+                            <h3 class="title svelte-2w0b9m">Premium</h3>
+                            <div class="price svelte-2w0b9m"><span class="numerator svelte-2w0b9m">$25</span>
+                                <span class="denominator svelte-2w0b9m">/month</span>
+                            </div>
+                            <span class="description"><!-- HTML_TAG_START -->
+                                <p>Voluptate nostrud mollit quis labore est sunt amet. Dolor eiusmod consectetur dolore eu nulla esse laboris quis excepteur nulla. </p><!-- HTML_TAG_END -->
+                            </span>
+                        </header>
+                        <hr class="svelte-2w0b9m">
+                        <ul class="features svelte-2w0b9m">
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z" /><!-- HTML_TAG_END -->
+                                    </svg></span>
+                                <span>Irure mollit cupidatat</span>
+                            </li>
+                            <li class="svelte-2w0b9m"><span class="icon svelte-2w0b9m"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                        <path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59L21 7Z" /><!-- HTML_TAG_END -->
+                                    </svg></span>
+                                <span>Enim aliquip non</span>
+                            </li>
+                        </ul>
+                        <a href="/" class="button svelte-2w0b9m">sunt</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-3659820d-3d8b-4b95-89de-f09245ed38fd">
+        <div class="component">
+            <section class="section-container svelte-c09796">
+                <div class="content svelte-c09796">
+                    <h2 class="heading">Contact Us</h2>
+                    <div class="body"><!-- HTML_TAG_START -->Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam ac lacus in enim feugiat ultrices eget quis purus. Donec lectus arcu.<!-- HTML_TAG_END --></div>
+                    <div class="social-links svelte-c09796"><a href="/" class="svelte-c09796"><span class="icon svelte-c09796"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                    <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" /><!-- HTML_TAG_END -->
+                                </svg></span>
+                            in
+                        </a><a href="/" class="svelte-c09796"><span class="icon svelte-c09796"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                                    <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" /><!-- HTML_TAG_END -->
+                                </svg></span>
+                            nostrud
+                        </a></div>
+                </div>
+                <form class="svelte-c09796"><label class="svelte-c09796"><span class="svelte-c09796">Name</span>
+                        <input type="Occaecat cillum tempor" placeholder="Deserunt laborum velit" class="svelte-c09796">
+                    </label><label class="svelte-c09796"><span class="svelte-c09796">Name</span>
+                        <input type="Adipisicing amet minim" placeholder="Aute veniam pariatur" class="svelte-c09796">
+                    </label>
+                    <button class="button svelte-c09796" type="submit">Submit</button>
+                </form>
+            </section>
+        </div>
+    </div>
+    <div class="section" id="section-40e18d74-6423-4f73-957f-5b18faeac6da">
+        <div class="component">
+            <footer class="section-container svelte-1m1m225">
+                <nav class="svelte-1m1m225"><a class="link svelte-1m1m225" href="/">amet</a><a class="link svelte-1m1m225" href="/">fugiat</a></nav>
+                <span class="primo svelte-1m1m225"><a href="https://primo.so" class="svelte-1m1m225">Primo</a> Powered </span>
+                <div class="social-links svelte-1m1m225"><a href="/" aria-label="proident" class="svelte-1m1m225"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                            <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" /><!-- HTML_TAG_END -->
+                        </svg>
+                    </a><a href="/" aria-label="officia" class="svelte-1m1m225"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
+                            <path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" /><!-- HTML_TAG_END -->
+                        </svg>
+                    </a></div>
+            </footer>
+        </div>
+    </div>
+
+    <script type="module">
+        const path = window.location.pathname === '/' ? '' : window.location.pathname
+        const [{
+            default: App
+        }] = await Promise.all([
+            import(path + '/_module.js')
+        ]).catch(e => console.error(e))
+        new App({
+            target: document.querySelector('body'),
+            hydrate: true,
+        })
+    </script>
+</body>
+
+</html>
