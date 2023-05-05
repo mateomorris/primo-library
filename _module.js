@@ -272,6 +272,14 @@ function attr(node, attribute, value) {
     else if (node.getAttribute(attribute) !== value)
         node.setAttribute(attribute, value);
 }
+/**
+ * List of attributes that should always be set through the attr method,
+ * because updating them through the property setter doesn't work reliably.
+ * In the example of `width`/`height`, the problem is that the setter only
+ * accepts numeric values, but the attribute can also be set to a string like `50%`.
+ * If this list becomes too big, rethink this approach.
+ */
+const always_set_through_set_attribute = ['width', 'height'];
 function set_attributes(node, attributes) {
     // @ts-ignore
     const descriptors = Object.getOwnPropertyDescriptors(node.__proto__);
@@ -285,7 +293,7 @@ function set_attributes(node, attributes) {
         else if (key === '__value') {
             node.value = node[key] = attributes[key];
         }
-        else if (descriptors[key] && descriptors[key].set) {
+        else if (descriptors[key] && descriptors[key].set && always_set_through_set_attribute.indexOf(key) === -1) {
             node[key] = attributes[key];
         }
         else {
@@ -5215,7 +5223,6 @@ function create_each_block$5(ctx) {
 // (80:2) {#if button.link.label}
 function create_if_block$5(ctx) {
 	let a;
-	let span;
 	let t_value = /*button*/ ctx[2].link.label + "";
 	let t;
 	let a_href_value;
@@ -5223,17 +5230,13 @@ function create_if_block$5(ctx) {
 	return {
 		c() {
 			a = element("a");
-			span = element("span");
 			t = text(t_value);
 			this.h();
 		},
 		l(nodes) {
 			a = claim_element(nodes, "A", { class: true, href: true });
 			var a_nodes = children(a);
-			span = claim_element(a_nodes, "SPAN", {});
-			var span_nodes = children(span);
-			t = claim_text(span_nodes, t_value);
-			span_nodes.forEach(detach);
+			t = claim_text(a_nodes, t_value);
 			a_nodes.forEach(detach);
 			this.h();
 		},
@@ -5243,8 +5246,7 @@ function create_if_block$5(ctx) {
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
-			append_hydration(a, span);
-			append_hydration(span, t);
+			append_hydration(a, t);
 		},
 		p(ctx, dirty) {
 			if (dirty & /*button*/ 4 && t_value !== (t_value = /*button*/ ctx[2].link.label + "")) set_data(t, t_value);
