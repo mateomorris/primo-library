@@ -239,6 +239,100 @@
             color: var(--color, #222)
         }
 
+        header.svelte-19bt6nw.svelte-19bt6nw {
+            color: white;
+            background-size: cover;
+            display: grid;
+            gap: 20rem
+        }
+
+        .section-container.svelte-19bt6nw.svelte-19bt6nw {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem
+        }
+
+        .logo.svelte-19bt6nw.svelte-19bt6nw {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.2
+        }
+
+        .desktop-nav.svelte-19bt6nw.svelte-19bt6nw {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%
+        }
+
+        .desktop-nav.svelte-19bt6nw nav.svelte-19bt6nw {
+            display: flex;
+            gap: 2rem
+        }
+
+        .desktop-nav.svelte-19bt6nw nav a.link.svelte-19bt6nw {
+            border-color: transparent;
+            transition: border-color 0.1s;
+            font-size: 0.95rem
+        }
+
+        .desktop-nav.svelte-19bt6nw nav a.link.svelte-19bt6nw:hover,
+        .desktop-nav.svelte-19bt6nw nav a.link .active.svelte-19bt6nw {
+            border-color: initial
+        }
+
+        @media(min-width: 800px) {
+            .desktop-nav.svelte-19bt6nw.svelte-19bt6nw {
+                display: flex
+            }
+        }
+
+        .mobile-nav.svelte-19bt6nw.svelte-19bt6nw {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            font-weight: 500
+        }
+
+        @media(min-width: 800px) {
+            .mobile-nav.svelte-19bt6nw.svelte-19bt6nw {
+                display: none
+            }
+        }
+
+        .headline.svelte-19bt6nw.svelte-19bt6nw {
+            font-size: clamp(2rem, 10vw, 3.5rem);
+            max-width: 800px;
+            padding-bottom: 2rem;
+            line-height: 1.1
+        }
+
+        #popup.svelte-19bt6nw.svelte-19bt6nw {
+            color: #222;
+            font-size: 1.25rem;
+            display: grid;
+            gap: 1rem;
+            position: absolute;
+            text-align: center;
+            background-color: var(--background-color, white);
+            box-shadow: var(--box-shadow, 0px 4px 30px rgba(0, 0, 0, 0.1));
+            border-radius: var(--border-radius);
+            inset: 0.5rem;
+            bottom: initial;
+            padding: 2rem;
+            z-index: 1
+        }
+
+        #popup.svelte-19bt6nw button#close.svelte-19bt6nw {
+            position: absolute;
+            right: 1rem;
+            top: 1rem
+        }
+
         .section-container.svelte-2w0b9m.svelte-2w0b9m {
             display: grid;
             gap: 0.5rem;
@@ -1007,6 +1101,33 @@
             </header>
         </div>
     </div>
+    <div class="section" id="section-28ce96b5-c5bd-45fc-bfa5-94f5c4f03e03">
+        <div class="component">
+            <header style="background-image:url('https://picsum.photos/600/400?blur=10')" role="img" aria-label="" class="svelte-19bt6nw">
+                <div class="section-container svelte-19bt6nw">
+                    <div class="desktop-nav svelte-19bt6nw"><a href="/" class="logo svelte-19bt6nw">Logo</a>
+                        <nav class="svelte-19bt6nw"><a class="link svelte-19bt6nw" href="/about">About</a><a class="link svelte-19bt6nw" href="/mission">Mission</a><a class="link svelte-19bt6nw" href="/team">Team</a><a class="link svelte-19bt6nw" href="/blog">Blog</a></nav>
+                    </div>
+                    <div class="mobile-nav svelte-19bt6nw"><a href="/" class="logo svelte-19bt6nw">Logo</a>
+                        <button id="open" aria-label="Open mobile navigation"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="30" height="30" viewBox="0 0 24 24" class="iconify iconify--eva"><!-- HTML_TAG_START -->
+                                <g id="iconifySvelte3">
+                                    <g id="iconifySvelte4">
+                                        <g id="iconifySvelte5" fill="currentColor">
+                                            <rect width="18" height="2" x="3" y="11" rx=".95" ry=".95" />
+                                            <rect width="18" height="2" x="3" y="16" rx=".95" ry=".95" />
+                                            <rect width="18" height="2" x="3" y="6" rx=".95" ry=".95" />
+                                        </g>
+                                    </g>
+                                </g><!-- HTML_TAG_END -->
+                            </svg></button>
+                    </div>
+                </div>
+                <div class="section-container svelte-19bt6nw">
+                    <h1 class="headline svelte-19bt6nw">Velit sint consectetur</h1>
+                </div>
+            </header>
+        </div>
+    </div>
     <div class="section" id="section-da72cc78-348a-4046-8fca-b84c1feb8ee4">
         <div class="component">
             <section class="section-container svelte-2w0b9m">
@@ -1067,13 +1188,9 @@
                     <div class="body svelte-16db7bl"><!-- HTML_TAG_START -->
                         <h1 id="thisissomemarkdown">This is some markdown</h1><!-- HTML_TAG_END -->
                     </div>
-                    <div class="buttons svelte-16db7bl"><a class="button svelte-16db7bl" href="/"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
-                                <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8h5Z" /><!-- HTML_TAG_END -->
-                            </svg>
+                    <div class="buttons svelte-16db7bl"><a class="button svelte-16db7bl" href="/">
                             <span>eu</span>
-                        </a><a class="button svelte-16db7bl" href="/"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden role="img" width="1em" height="1em" viewBox="0 0 24 24" class="iconify iconify--mdi"><!-- HTML_TAG_START -->
-                                <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8h5Z" /><!-- HTML_TAG_END -->
-                            </svg>
+                        </a><a class="button svelte-16db7bl" href="/">
                             <span>incididunt</span>
                         </a></div>
                 </div>
